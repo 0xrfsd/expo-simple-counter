@@ -4,17 +4,17 @@ import { Text, View, StyleSheet } from 'react-native';
 import { Press } from './styles'
 
 class Counter extends Component {
-    state = { count: 0 };
 
-    setCount = () => this.setState(
-      prevState => ({ ...prevState, count: this.state.count + 1 })
-    )
+    constructor(props) {
+        super(props);
+        this.state = { count: 0 };
+    }
 
     render() {
         const { count } = this.state
         return (
             <View>
-                <Press onPress={this.setCount} />
+                <Press onPress={() => this.setState({ count: this.state.count + 1 })} />
                 <Text>{count}</Text>
             </View>
         );
